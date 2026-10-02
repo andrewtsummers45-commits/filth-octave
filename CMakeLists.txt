@@ -4,6 +4,10 @@ project(FilthOctave VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Bake Microsoft's runtime into the plugin so it loads on any PC
+# (no separate "Visual C++ Redistributable" install needed)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
 # Download the JUCE framework automatically during the build
 include(FetchContent)
 FetchContent_Declare(
